@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vertinimai{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th scope="row">Komanda</th>
+            <td>{{ params["team"] }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Mentorius</th>
+            <td>{{ params["mentor"] }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Laimingasis(-oji)</th>
+            <td>{{ params["pupil"] }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+        {% if params["isMe"] == "true" %}
+            <div class="alert alert-success" role="alert">
+                Dešimt balų
+            </div>
+        {% else %}
+            <div class="alert alert-warning" role="alert">
+                Gal pasiseks kitą kartą
+            </div>
+        {% endif %}
+
+
+
+    <a href={{ path('students') }}>Visi dalyviai</a>
+    <script src="Vertinimai-1_files/app.js"></script>
+
+{% endblock %}

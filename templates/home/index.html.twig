@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Studentspage - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    {{ parent() }}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-weight: 100;
+            font-family: 'Lato';
+        }
+
+        .Students {
+            margin: 20px 20px auto;
+            /*text-align: center;*/
+            /*font-size: 96px;*/
+            color: blue;
+
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="Students"><h3><a href="{{ path('students') }}">Students</a></h3></div>
+{% endblock %}

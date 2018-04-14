@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Studentspage - {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    {{ parent() }}
+    <style>
+
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1 class="display-5">Studentai</h1>
+    <ul class="list-group">
+
+        {% for d in data %}
+            {% for name in d["members"] %}
+                {% if name == 'Zbignev' %}
+                    <li class="list-group-item"><a href="{{ path('student', {'team': d['team'], 'mentor': d['mentor'], 'pupil': name, 'isMe': 'true'}) }}">{{ name }}</a></li>
+                {% else %}
+                    <li class="list-group-item"><a href="{{ path('student', {'team': d['team'], 'mentor': d['mentor'], 'pupil': name, 'isMe': 'false'}) }}">{{ name }}</a></li>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+    </ul>
+{% endblock %}
