@@ -25,4 +25,11 @@
 
 {% block body %}
     <div class="Students"><h3><a href="{{ path('students') }}">Students</a></h3></div>
+
+    <input type="text" id="name"><span id="validation-result"></span>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/js/validation.js') }}"></script>
+    {{ parent() }}
 {% endblock %}
