@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use http\Env\Response;
+use PhpParser\Node\Expr\Cast\Object_;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -22,10 +23,10 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/validate/{element}", name="validatePerson")
+     * @Route("/validatename/{element}", name="validatePerson")
      * @Method({"POST"})
      */
-    public function validate(Request $request, $element)
+    public function validateName(Request $request, $element)
     {
         try {
             $input = json_decode($request->getContent(), true)['input'];
@@ -44,7 +45,7 @@ class HomeController extends Controller
 
 
     /**
-     * @Route("/validate/{element}", name="validateTeam")
+     * @Route("/validateteam/{element}", name="validateTeam")
      * @Method({"POST"})
      */
     public function validateTeam(Request $request, $element)
@@ -55,10 +56,10 @@ class HomeController extends Controller
             return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
         }
 
-        $students = $this->getTeam();
+        $teams = $this->getTeam();
         switch ($element) {
             case 'team':
-                return new JsonResponse(['valid' => in_array(strtolower($input), $students)]);
+                return new JsonResponse(['valid' => in_array(strtolower($input), $teams)]);
         }
 
         return new JsonResponse(['error' => 'Invalid method'], Response::HTTP_BAD_REQUEST);
@@ -128,13 +129,18 @@ class HomeController extends Controller
     private function getTeam() {
         $teamArray = [];
         $storage = json_decode($this->getStorage(), true);
-        foreach ($storage as $teamData) {
-//            foreach ($teamData[''] as $team) {
-                $teamArray[] = strtolower($teamData);
-//            }
+
+        foreach ($storage as $obj)
+        {
+            $teamArray[] = strtolower(key($storage));
+            unset($storage[key($storage)]);
+
         }
         return $teamArray;
+
     }
+
+
 
 
 }

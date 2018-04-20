@@ -41,6 +41,8 @@ const validateTeam = function () {
 };
 
 team.onkeyup = validateTeam;
+// team.onkeyup = validationResultTeam.innerText = "hehe";
 team.onchange = validateTeam;
+// team.onchange = validationResultTeam.innerText = "hehe";
 
 
