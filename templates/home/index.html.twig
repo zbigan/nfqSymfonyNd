@@ -23,6 +23,24 @@
     </style>
 {% endblock %}
 
+
+
 {% block body %}
-    <div class="Students"><h3><a href="{{ path('students') }}">Students</a></h3></div>
+    <div class="container">
+
+        <div class="Students"><h3><a href="{{ path('students') }}">Students</a></h3></div>
+        Komandos narys:
+        <input type="text" id="name">
+        <span id="validation-result" data-path="{{ path('validatePerson', {'element': 'name'}) }}"></span>
+        <br>
+        Komandos pavadinimas:
+        <input type="text" id="team">
+        <span id="validation-result-team" data-path="{{ path('validateTeam', {'element': 'team'}) }}"></span>
+
+    </div>
 {% endblock %}
+
+{#{% block javascripts %}#}
+    {#<script src="{{ asset('build/js/validation.js') }}"></script>#}
+    {#{{ parent() }}#}
+{#{% endblock %}#}
