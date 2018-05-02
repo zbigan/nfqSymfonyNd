@@ -18,6 +18,10 @@ class User extends BaseUser
      * @ORM\Column(type="string")
      */
     private $website;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $linkedIn;
     public function getId()
     {
         return $this->id;
@@ -36,5 +40,18 @@ class User extends BaseUser
     {
         $this->website = $website;
     }
-    
+    /**
+     * @return mixed
+     */
+    public function getLinkedIn()
+    {
+        return $this->linkedIn;
+    }
+    /**
+     * @param mixed $linkedIn
+     */
+    public function setLinkedIn($linkedIn): void
+    {
+        $this->linkedIn = $linkedIn;
+    }
 }
